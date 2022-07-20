@@ -61,7 +61,6 @@ const Layout = ({
   children,
 }: LayoutProps) => {
   const [opened, handlers] = useDisclosure(false);
-  const isLargerThanMd = useMediaQuery("(min-width: 769px)");
   const scrollTo = (target: string) => {
     if (target === "Home") {
       scrollToGallery();
@@ -128,6 +127,7 @@ const Layout = ({
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
         <div style={{ alignItems: "center", height: "3em" }}>
           <Burger
+            name="nav_main"
             ml="1em"
             opened={opened}
             onClick={() => handlers.toggle()}
