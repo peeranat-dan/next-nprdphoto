@@ -4,13 +4,20 @@ import ImageModal from "../imagemodal/index";
 import { AspectRatio, Box, Container } from "@mantine/core";
 
 interface GalleryImageProps {
+  priority: boolean;
   src: string;
   fullSrc: string;
   alt: string;
   model: string;
 }
 
-const GalleryImage = ({ src, alt, fullSrc, model }: GalleryImageProps) => {
+const GalleryImage = ({
+  priority,
+  src,
+  alt,
+  fullSrc,
+  model,
+}: GalleryImageProps) => {
   const [opened, handlers] = useDisclosure(false);
   return (
     <>
@@ -26,6 +33,7 @@ const GalleryImage = ({ src, alt, fullSrc, model }: GalleryImageProps) => {
         onClick={() => handlers.toggle()}
         src={src}
         alt={alt}
+        priority={priority}
         layout="responsive"
         width="300px"
         height="450px"

@@ -19,6 +19,7 @@ const GallerySection = ({ target }: GallerySectionProps) => {
           return (
             <Grid.Col xs={12} sm={6} md={4} lg={3} xl={3} key={photo.name}>
               <GalleryImage
+                priority={photo.name === "PProud1"}
                 src={`/photos/preview/${photo.name}.jpg`}
                 alt={photo.ig}
                 fullSrc={`/photos/fullRes/${photo.name}.jpg`}
