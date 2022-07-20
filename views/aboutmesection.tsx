@@ -1,6 +1,6 @@
 import React, { RefObject } from "react";
-// import Image from "next/image";
-import { Blockquote, Center, Container, Grid, Image } from "@mantine/core";
+import Image from "next/image";
+import { Blockquote, Center, Container, Grid } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 const AboutSection = ({ target }: { target: RefObject<HTMLDivElement> }) => {
@@ -23,9 +23,10 @@ const AboutSection = ({ target }: { target: RefObject<HTMLDivElement> }) => {
               <div>
                 <Image
                   width="300px"
-                  height="450px"
+                  height={450}
+                  layout="intrinsic"
                   alt="A photo of me carrying a camera wearing a green shirt at Chulalongkorn University"
-                  src="https://firebasestorage.googleapis.com/v0/b/photography-profile.appspot.com/o/myPhoto%2FDSC04005(1).jpg?alt=media&token=02590c87-be3c-4eae-9352-bc4dca168353"
+                  src="/photos/myPhoto/1.jpg"
                 />
               </div>
             </Center>
