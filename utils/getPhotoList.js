@@ -1,0 +1,27 @@
+// export const photosList = [
+//   "PProud1",
+//   "PProud2",
+//   "PPom1",
+//   "Aom1",
+//   "Aom2",
+//   "PEarn1",
+//   "Billing1",
+//   "PProud3",
+//   "Nin1",
+//   "PTam1",
+//   "Coach1",
+// ];
+
+export const photosList = [
+  { name: "PProud1", ig: "proudprdp" },
+  { name: "PProud2", ig: "proudprdp" },
+  { name: "PPom1", ig: "pomthesmurf" },
+  { name: "Aom1", ig: "aaomuu_pchp" },
+  { name: "Aom2", ig: "aamomuu_pchp" },
+  { name: "PEarn1", ig: "earncwy" },
+  { name: "Billing1", ig: "billabilling" },
+  { name: "PProud3", ig: "proudprdp" },
+  { name: "Nin1", ig: "nin_loh" },
+  { name: "PTam1", ig: "ttamtammm" },
+  { name: "Coach1", ig: "coachchii" },
+];
