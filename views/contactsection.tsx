@@ -10,8 +10,9 @@ import {
   Stack,
   UnstyledButton,
 } from "@mantine/core";
-import { useMediaQuery, useOs } from "@mantine/hooks";
+import { useMediaQuery } from "@mantine/hooks";
 import { Typography } from "../components/base";
+import { useCheckMobile } from "../utils/useCheckMobile";
 
 const buttonConfig = (theme: any) => ({
   display: "block",
@@ -53,8 +54,7 @@ const myImage = {
 
 const ContactSection = ({ target }: { target: RefObject<HTMLDivElement> }) => {
   const match = useMediaQuery("(min-width: 769px");
-  const os = useOs();
-
+  const isMobile = useCheckMobile();
   return (
     <Container
       fluid
@@ -85,11 +85,7 @@ const ContactSection = ({ target }: { target: RefObject<HTMLDivElement> }) => {
                   component="a"
                   target="_blank"
                   rel="noopener noreferer"
-                  href={
-                    os === "windows" || os === "macos" || os === "linux"
-                      ? option.url
-                      : option.smallUrl
-                  }
+                  href={!isMobile ? option.url : option.smallUrl}
                   sx={buttonConfig}
                 >
                   <Group>
