@@ -1,47 +1,52 @@
 import React from "react";
 import { Button, Group, Space, Table } from "@mantine/core";
-import { useMediaQuery, useOs } from "@mantine/hooks";
+import { useMediaQuery } from "@mantine/hooks";
 import { Modal, Typography } from "../base";
 import { BrandInstagram } from "tabler-icons-react";
+import { useCheckMobile } from "../../utils/useCheckMobile";
 
 interface PricingModalProps {
   opened: boolean;
   onClose: () => void;
 }
-const PricingModal = ({ opened, onClose }: PricingModalProps) => {
-  const TABEL_HEAD = ["Option", "Full Day", "Half Day", "Price/hour"];
-  const options = [
-    { option: "Graduation", priceFullDay: 4500, priceHalfDay: 3500 },
-    { option: "Profile", priceFullDay: 3500, priceHalfDay: 2500 },
-    { option: "Hourly (Not Graduation)", pricePerHour: 800 },
-  ];
-  const TABLE_CONTENT = options.map((option) => (
-    <tr key={option.option}>
-      <td>{option.option}</td>
-      <td>
-        {option.priceFullDay
-          ? option.priceFullDay.toLocaleString() + " THB"
-          : "-"}
-      </td>
-      <td>
-        {option.priceHalfDay
-          ? option.priceHalfDay.toLocaleString() + " THB"
-          : "-"}
-      </td>
-      <td>
-        {option.pricePerHour
-          ? option.pricePerHour.toLocaleString() + " THB"
-          : "-"}
-      </td>
-    </tr>
-  ));
 
+const TABEL_HEAD = ["Option", "Half Day", "Full Day", "Price/hour"];
+const options = [
+  { option: "Graduation", priceFullDay: 4500, priceHalfDay: 3500 },
+  {
+    option: "Profile",
+    priceFullDay: 3000,
+    priceHalfDay: 2000,
+    pricePerHour: 800,
+  },
+];
+const TABLE_CONTENT = options.map((option) => (
+  <tr key={option.option}>
+    <td>{option.option}</td>
+    <td>
+      {option.priceHalfDay
+        ? option.priceHalfDay.toLocaleString() + " THB"
+        : "-"}
+    </td>
+    <td>
+      {option.priceFullDay
+        ? option.priceFullDay.toLocaleString() + " THB"
+        : "-"}
+    </td>
+    <td>
+      {option.pricePerHour
+        ? option.pricePerHour.toLocaleString() + " THB"
+        : "-"}
+    </td>
+  </tr>
+));
+
+const PricingModal = ({ opened, onClose }: PricingModalProps) => {
   const match = useMediaQuery("(min-width: 769px)");
-  const os = useOs();
-  const dmLink =
-    os === "windows" || os === "macos" || os === "linux"
-      ? "https://www.instagram.com/nprdphoto"
-      : "instagram://user?username=nprdphoto";
+  const isMobile = useCheckMobile();
+  const dmLink = !isMobile
+    ? "https://www.instagram.com/nprdphoto"
+    : "instagram://user?username=nprdphoto";
 
   return (
     <Modal
@@ -68,7 +73,7 @@ const PricingModal = ({ opened, onClose }: PricingModalProps) => {
       </Table>
       <Space mt="1em" />
       <Typography color="red">
-        * If more than one person, DM me for discount.
+        * If more than one person, DM me for discount price.
       </Typography>
       <Group position="right">
         <Button color="appPurple" component="a" href={dmLink} target="blank">
